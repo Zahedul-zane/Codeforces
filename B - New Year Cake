@@ -1,0 +1,33 @@
+// Source: https://usaco.guide/general/io
+ 
+#include <bits/stdc++.h>
+#include <cctype>
+using namespace std;
+ 
+int main() {
+	int t;
+    cin>>t;
+    while(t--){
+    long long a,b;
+    cin>>a>>b;
+    int max_layers=0;
+    for(int i=1;i<=40;++i){
+        long long type1 =0;
+        long long type2 =0;
+ 
+        for(int j = 0;j<i;j++){
+            long long layer_size = (1LL << j);
+            if (j % 2 == 0) type1 += layer_size;
+            else type2 += layer_size;
+        }
+        if ((type1 <= a && type2 <= b) || (type1 <= b && type2 <= a)) {
+            max_layers = i;
+        } else {
+           
+            break;
+        }
+    }
+        cout << max_layers << endl;
+    }
+      
+}
